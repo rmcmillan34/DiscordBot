@@ -40,6 +40,8 @@ async def on_ready():
 	members = '\n - '.join([member.name for member in guild.members])
 	print(f'Guild Members:\n - {members}')
 
+	await bot.get_channel(GENERAL).send('Im online! Looking good ' + str(random.choice([member.name for member in guild.members][1:]) + '!'))
+
 
 @bot.event
 async def on_member_join(member):
