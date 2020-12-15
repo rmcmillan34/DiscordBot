@@ -7,6 +7,7 @@ import requests
 import json
 import html2text
 import string
+import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -17,6 +18,8 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 GENERAL = int(os.getenv('GENERAL_CHANNEL'))
+VERBOSE = os.getenv('DISCORD_VERBOSE')
+
 
 intents = discord.Intents.default()
 intents.members = True
@@ -26,6 +29,8 @@ README can be found here: https://github.com/rmcmillan34/DiscordBot/blob/main/RE
 '''
 
 bot = commands.Bot(command_prefix='!', description=description, intents=intents)
+bot.can_talk = VERBOSE
+
 
 @bot.event
 async def on_ready():
@@ -55,6 +60,18 @@ async def on_member_join(member):
     )
 
 
+@bot.event
+async def on_message(ctx):
+	'''
+	What the bot should do on receipt of a message.
+	'''
+	if ctx == '!verbose':
+		verbose(ctx)
+	print('message received')
+	if bot.can_talk == True:
+		print('RESPONDING')
+
+
 @bot.command(name='hello', category='Useless')
 async def hello(ctx):
 	'''
@@ -79,11 +96,11 @@ async def scissors_paper_rock(ctx):
 	Return a random scissors, paper or rock emoji
 	'''
 	await ctx.send('Alright {0.author.mention}, lets go..'.format(ctx))
-	time.sleep(1)
+	await asyncio.sleep(1)
 	await ctx.send("Scissors..")
-	time.sleep(1)
+	await asyncio.sleep(1)
 	await ctx.send("Paper..")
-	time.sleep(1)
+	await asyncio.sleep(1)
 	await ctx.send("Rock!")
 	choices = [':scissors:', ':roll_of_paper:', ':rock:']
 	await ctx.send(random.choice(choices))
@@ -119,7 +136,22 @@ async def trivia_question(ctx):
 		answers = answers + alphabet[i] + '). ' + answer_list[i] + '\n'
 
 	await ctx.send(answers)
-	time.sleep(60)
+	await asyncio.sleep(10)
 	await ctx.send("The correct answer was " + alphabet[answer_list.index(correct_answer)] + '). ' + correct_answer)
+
+
+@bot.command(name='verbose')
+async def verbose(ctx):
+	'''
+	Toggle if the bot can respond to messages from members on the server
+	'''
+	await ctx.send(bot.can_talk)
+	bot.can_talk = not bot.can_talk
+	if bot.can_talk == False:
+		await ctx.send('https://tenor.com/view/matrix-mouth-neo-mr-anderson-melted-gif-7848092')
+	else:
+		await ctx.send('https://tenor.com/view/finally-about-time-damn-gif-15605541')
+	await ctx.send(bot.can_talk)
+
 
 bot.run(TOKEN)

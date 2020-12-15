@@ -20,17 +20,21 @@ The idea to create a chat bot came from aceking007's [#100ProjectssOfCode](https
 ## Features
 Currently RizzBot has the following engrained functionalities:  
 [x] Welcome a new user to the discord server.  
+[x] Return a personalised greeting  
+[x] Return a random trivia question from [https://opentdb.com](https://opentdb.com/browse.php)  
+[x] Roll a dice and return the integer between 1 and 6 for a user.
   
 ## Features to Add
 The following is a list of features that I intend to add to this project.  
-[] Train an Artificial Neural Network to give RizzBot the ability to communicate.  
+[] Endow with sentience (Incorporate Artificial Intelligence)  
 [] Link to this README.md on github in the !help command  
+[] Heads or Tails  
 [] Scissors Paper Rock vs RizzBot  
 [] Scissors Paper Rock vs another server member  
 [] Adjudicate games of odds between server members  
 [] Ask Jeopardy Questions, wait and tell the answer  
-[] [Play games of Trivia](https://opentdb.com/browse.php)
-[] Endow with sentience (Incorporate Machine Learning)  
+[] Play trivia with server members and keep score    
+
   
 ## Commands
 All commands for Rizzbot are prefixed with an '!'. The following commands can be sent through any text channel or Direct Message to RizzBot:  
@@ -43,3 +47,6 @@ All commands for Rizzbot are prefixed with an '!'. The following commands can be
 
 ## What I have learned
 ### A Build Log (BLog)
+**15DEC20 - Trivia Night**  
+
+
