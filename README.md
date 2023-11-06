@@ -19,10 +19,10 @@ The idea to create a chat bot came from aceking007's [#100ProjectssOfCode](https
   
 ## Features
 Currently RizzBot has the following engrained functionalities:  
-[x] Welcome a new user to the discord server.  
-[x] Return a personalised greeting  
-[x] Return a random trivia question from [https://opentdb.com](https://opentdb.com/browse.php)  
-[x] Roll a dice and return the integer between 1 and 6 for a user.
+- [x] Welcome a new user to the discord server.  
+- [x] Return a personalised greeting  
+- [x] Return a random trivia question from [https://opentdb.com](https://opentdb.com/browse.php)  
+- [x] Roll a dice and return the integer between 1 and 6 for a user.
   
 ## Features to Add
 The following is a list of features that I intend to add to this project.  
